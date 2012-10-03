@@ -1,0 +1,35 @@
+{
+    "name": "barberry/image",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Magomogo/Barberry"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Magomogo/barberry-plugin-imagemagic"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Magomogo/barberry-plugin-installer"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/Magomogo/barberry-interfaces"
+        }
+    ],
+    "require": {
+        "barberry/barberry": "*",
+        "barberry/plugin-imagemagic": "*"
+    },
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Maxim Gnatenko",
+            "email": "maxim@xiag.ch"
+        }
+    ],
+    "autoload": {
+        "classmap": ["barberry-directions/"]
+    }
+}
