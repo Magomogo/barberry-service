@@ -1,6 +1,7 @@
 .idea
 etc/config.php
 barberry-directions/*.php
+barberry-monitors/*.php
 !var/DIR_INFO.TXT
 !public/cache/DIR_INFO.TXT
 !usr/DIR_INFO.TXT
