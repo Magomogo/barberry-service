@@ -2,7 +2,7 @@
     "name": "barberry/image",
     "require": {
         "barberry/barberry": "*",
-        "barberry/plugin-imagemagic": "*"
+        "barberry/plugin-imagemagick": "*"
     },
     "minimum-stability": "dev",
     "authors": [
