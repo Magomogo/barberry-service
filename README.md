@@ -1,7 +1,7 @@
-barberry-images
+barberry-service
 ===============
 
-Images hosting service on base of Barberry library
+Images hosting service on base of Barberry library. Serve as origin for a barberry-based service. Fork it if you need any project-specific features or different set of plugins.
 
 Installation
 ------------
