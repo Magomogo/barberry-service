@@ -1,18 +1,10 @@
 {
-    "name": "barberry/image",
-    "version": "0.2",
+    "name": "barberry/service",
     "license": "MIT",
     "require": {
-        "barberry/barberry": "*",
-        "barberry/plugin-imagemagick": "*"
+        "barberry/barberry": "dev-master",
+        "barberry/plugin-imagemagick": "dev-master"
     },
-    "minimum-stability": "dev",
-    "authors": [
-        {
-            "name": "Maxim Gnatenko",
-            "email": "maxim@xiag.ch"
-        }
-    ],
     "autoload": {
         "classmap": ["barberry-directions/", "barberry-monitors/"]
     }
