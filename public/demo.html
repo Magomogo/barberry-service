@@ -39,6 +39,7 @@
 
 <script>
     var barberryDemo = (function () {
+        'use strict';
 
         function log(text) {
             var textNode = document.getElementById('log').childNodes[0];
@@ -67,12 +68,12 @@
 
         function onload(event) {
             prepareImageContainer();
-            if (event.target.status == 201) {
-                var doc = eval('(' + event.target.responseText + ')');
+            if (event.target.status === 201) {
+                var src, w, doc = eval('(' + event.target.responseText + ')');
                 log(JSON.stringify(doc, null, '\t'));
 
-                for (var w = 100; w <= 300; w = w + 100) {
-                    var src = doc.id + '_' + w + 'x.' + doc.ext;
+                for (w = 100; w <= 300; w = w + 100) {
+                    src = doc.id + '_' + w + 'x.' + doc.ext;
                     appendImage(src, 'GET /' + src);
                 }
             } else {
@@ -87,7 +88,7 @@
                 oReq.onload = onload;
                 oReq.send(new FormData(document.forms.namedItem("uploadForm")));
             }
-        }
+        };
     }());
 </script>
 
