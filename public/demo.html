@@ -1,0 +1,85 @@
+<html>
+<head>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <style>
+        .dl-horizontal dt {width:300px; padding: 0 10px}
+        .dl-horizontal img {margin: 10px}
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Image hosting with Barberry</h1>
+
+    <form name="uploadForm" method="post" enctype="multipart/form-data" class="form-inline">
+        <fieldset>
+            <legend>Select an image and hit 'Upload!' button</legend>
+            <input type="file" name="file" id="file" required/>
+            <a class="btn" href="javascript:barberryDemo.upload()">Upload!</a>
+        </fieldset>
+    </form>
+
+    <h3>POST response:</h3>
+    <pre id="log">empty</pre>
+    <h3>GET responses:</h3>
+    <dl id="images">
+        <dd>empty</dd>
+    </dl>
+</div>
+
+<script>
+    var barberryDemo = (function () {
+
+        function log(text) {
+            var textNode = document.getElementById('log').childNodes[0];
+            textNode.parentNode.replaceChild(document.createTextNode(text), textNode);
+        }
+
+        function prepareImageContainer() {
+            var dl = document.createElement('dl');
+            dl.setAttribute('id', 'images');
+            dl.setAttribute('class', 'dl-horizontal');
+            document.getElementById('images').parentNode.replaceChild(dl, document.getElementById('images'));
+        }
+
+        function appendImage(src, description) {
+            var image = document.createElement('img'),
+                dd = document.createElement('dd'),
+                dt = document.createElement('dt');
+            image.src = src;
+            image.className = 'img-polaroid';
+
+            document.getElementById('images').appendChild(dt);
+            document.getElementById('images').appendChild(dd);
+            dt.appendChild(document.createTextNode(description));
+            dd.appendChild(image);
+        }
+
+        function onload(event) {
+            prepareImageContainer();
+            if (event.target.status == 201) {
+                var doc = eval('(' + event.target.responseText + ')');
+                log(JSON.stringify(doc, null, '\t'));
+
+                for (var w = 100; w <= 300; w = w + 100) {
+                    var src = doc.id + '_' + w + 'x.' + doc.ext;
+                    appendImage(src, 'GET /' + src);
+                }
+            } else {
+                log("Error " + event.target.status + " occurred uploading your file.");
+            }
+        }
+
+        return {
+            upload: function () {
+                var oReq = new XMLHttpRequest();
+                oReq.open("POST", "/", true);
+                oReq.onload = onload;
+                oReq.send(new FormData(document.forms.namedItem("uploadForm")));
+            }
+        }
+    }());
+</script>
+
+</body>
+</html>
