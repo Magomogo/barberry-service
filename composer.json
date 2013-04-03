@@ -2,7 +2,7 @@
     "name": "barberry/service",
     "license": "MIT",
     "require": {
-        "barberry/barberry": "1.1.*",
+        "barberry/barberry": "1.1.*@dev",
         "barberry/plugin-imagemagick": "1.0.*"
     },
     "autoload": {
