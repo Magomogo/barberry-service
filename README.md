@@ -7,6 +7,7 @@ Installation
 ------------
 
     composer.phar install
+    ./check_dependencies.php
 
 Uploading an image
 ------------------
