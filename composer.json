@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "barberry/barberry": "1.1.*@dev",
-        "barberry/plugin-imagemagick": "1.0.*"
+        "barberry/plugin-imagemagick": "*"
     },
     "autoload": {
         "classmap": ["barberry-directions/", "barberry-monitors/"]
