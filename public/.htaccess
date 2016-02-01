@@ -7,6 +7,13 @@ RewriteCond %{REQUEST_METHOD} =GET
 RewriteCond %{DOCUMENT_ROOT}/cache/$1/$1$2 -f
 RewriteRule ^([^_\.]+)([_\.]?.*)$ %{DOCUMENT_ROOT}/cache/$1/$1$2 [L,E=REWRITE:1]
 
+# rewrite rule for non linear cache structure
+# example:
+# '/e61d34015c1ec1f18029_105x52bgFFFFFF.png' -> '/cache/e6/1d/34/e61d34015c1ec1f18029/e61d34015c1ec1f18029_105x52bgFFFFFF.png'
+RewriteCond %{REQUEST_METHOD} =GET
+RewriteCond %{DOCUMENT_ROOT}/cache/$1/$2/$3/$1$2$3$4%{REQUEST_URI} -f
+RewriteRule ^([a-z0-9]{2})([a-z0-9]{2})([a-z0-9]{2})([^_]+) %{DOCUMENT_ROOT}/cache/$1/$2/$3/$1$2$3$4%{REQUEST_URI} [L,E=REWRITE:1]
+
 RewriteCond %{REQUEST_FILENAME} -s [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
