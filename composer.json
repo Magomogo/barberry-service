@@ -2,8 +2,8 @@
     "name": "barberry/service",
     "license": "MIT",
     "require": {
-        "barberry/barberry": "1.1.*@dev",
-        "barberry/plugin-imagemagick": "*"
+        "barberry/barberry": "^3.0",
+        "barberry/plugin-imagemagick": "^2.0"
     },
     "autoload": {
         "classmap": ["barberry-directions/", "barberry-monitors/"]
